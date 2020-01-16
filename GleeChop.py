@@ -3,6 +3,17 @@ import pydub
 import numpy as np
 
 """
+Summary
+------------------
+    read
+    audioGraph
+    findnonSilent
+    extractIntervals
+    write
+"""
+
+
+"""
 MP3 to numpy array
 Parameters
 file: string pathname to audio file
