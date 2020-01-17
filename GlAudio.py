@@ -10,6 +10,7 @@ Summary
     findnonSilent
     extractIntervals
     write
+    Methods for Fixing incorrect extractions
 """
 
 
@@ -115,13 +116,13 @@ Write from numpy array to MP3
 Example
 """
 # Load some audio. Librosa audio load defaults to audioread, which is much slower
-filepath = '/Users/Jonathan/Desktop/Informática/PYTHON/audioChopper/UMMGC_1952Fall_3.mp3'
-out_filename = 'UMMGC_1952F'
+filepath = '/Users/Jonathan/Desktop/Informática/PYTHON/audioChopper/temp_2.mp3'
+out_filename = 'temp'
 y, sr = read(filepath)
 # librosa load for reference:
 # y, sr = librosa.load("/Users/Jonathan/Desktop/UMMGC_1952F_3-extract.mp3")
 
-intervals = findnonSilent(y, top_db = 55, shortest_song = 45)
+intervals = findnonSilent(y, top_db = 60, shortest_song = 30)
 print (intervals)
 print ('\a')
 extract = input("Extract intervals? (y/n)")
@@ -132,3 +133,26 @@ if extract == "y":
         count += 1
     print('Done.')
     print ('\a\a')
+
+"""
+Specify intervals for fixing incorrect splits
+"""
+# a = [[0, 2646000], [2646000, 12612600]]
+# count = 1
+# for i in a:
+#     extractIntervals(i[0], i[1], filepath, out_filename + "_" + str(count), count)
+#     count += 1
+# print('Done.')
+"""
+concatenate with other audio file
+"""
+# file1 = '/Users/Jonathan/Desktop/Informática/PYTHON/audioChopper/UMMGC_1952F2_1.mp3'
+# file2 = '/Users/Jonathan/Desktop/Informática/PYTHON/audioChopper/addto1.mp3'
+# outname = 'UMMGC_1952F2_1.mp3'
+# from pydub import AudioSegment
+# song1 = AudioSegment.from_mp3(file1)
+# song2 = AudioSegment.from_mp3(file2)
+# song1 += song2
+# import os
+# os.remove(outname)
+# song1.export(outname, format="mp3")
